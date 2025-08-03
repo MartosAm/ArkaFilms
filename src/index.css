@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#2C2C2C] text-[#919173];
+  }
+}
+
+@layer components {
+  .accent-color {
+    @apply text-[#E76F51];
+  }
+  .accent-bg {
+    @apply bg-[#5451e7];
+  }
+}
