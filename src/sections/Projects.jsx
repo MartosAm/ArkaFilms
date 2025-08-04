@@ -95,7 +95,7 @@ const ProjectCard = ({ project, index }) => {
         <span className="ml-3 bg-principal/60 text-acento text-xs font-bold px-3 py-1 rounded-full">{project.category}</span>
       </div>
       <h3 className="text-xl font-bold mb-2 flex-grow text-acento">{project.title}</h3>
-      <p className="text-texto-secondary text-sm mb-6">{project.description}</p>
+      <p className="text-black text-sm mb-6">{project.description}</p>
       <a
         href={project.link}
         target="_blank"

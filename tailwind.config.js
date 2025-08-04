@@ -9,8 +9,9 @@ module.exports = {
       colors: {
         principal: '#2C2C2C',
         secundario: '#F5F5DC',
-        acento: '#FF6347',
-        'texto-claro': '#FFFFFF',
+        acento: '#E76F51',
+        texto1: '#856666',
+        'texto-claro': '#000000',
       },
       keyframes: {
         float: {

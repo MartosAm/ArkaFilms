@@ -59,7 +59,7 @@ const ContactCard = ({ method, index }) => {
         >
             {method.icon}
             <h3 className="text-2xl font-bold mt-4 mb-2 text-acento">{method.name}</h3>
-            <p className="text-texto-secondary mb-6 h-10">{method.handle}</p>
+            <p className="text-black mb-6 h-10">{method.handle}</p>
             <a
                 href={method.link}
                 target="_blank"
