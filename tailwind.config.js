@@ -1,18 +1,17 @@
- /** @type {import('tailwindcss').Config} */
-export default {
-   content: [
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-   theme: {
-     extend: {},
-   },
-   plugins: [],
- }
- // tailwind.config.js
-module.exports = {
   theme: {
     extend: {
+      colors: {
+        principal: '#2C2C2C',
+        secundario: '#F5F5DC',
+        acento: '#FF6347',
+        'texto-claro': '#FFFFFF',
+      },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
@@ -24,4 +23,5 @@ module.exports = {
       },
     },
   },
+  plugins: [],
 };

@@ -5,18 +5,24 @@ import About from './sections/About';
 import Experience from './sections/Experience';
 import Skills from './sections/Skills';
 import Gallery from './sections/Gallery';
+import Education from './sections/Education';
+import Projects from './sections/Projects';
+import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 
 const App = () => {
   return (
-    <div className="font-sans bg-principal text-secundario min-h-screen pt-16">
+    <div className="font-body bg-background text-text-primary min-h-screen">
       <Header />
       <main>
         <Hero />
         <About />
-        <Experience />
-        <Skills />
         <Gallery />
+        <Projects />
+        <Skills />
+        <Experience />
+        <Education />
+        <Contact />
       </main>
       <Footer />
     </div>

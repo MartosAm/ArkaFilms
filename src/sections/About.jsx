@@ -11,7 +11,7 @@ const About = () => {
       transition={{ duration: 0.8, ease: 'easeOut' }}
       className="max-w-4xl mx-auto px-6 py-16 bg-secundario text-principal"
     >
-      <h2 className="text-3xl font-semibold mb-10 border-b border-gray-400 pb-2">Sobre Mí</h2>
+      <h2 className="text-3xl font-semibold mb-10 border-b border-acento pb-2">Sobre Mí</h2>
       <p className="text-lg leading-relaxed">
         ¡Hola! Soy Alejandro Vargas, un fotógrafo y videógrafo apasionado por contar historias a través de imágenes. Con una sólida formación en comunicación audiovisual y años de experiencia en el campo, he tenido el privilegio de trabajar en una variedad de proyectos que van desde retratos íntimos hasta producciones de video a gran escala.
       </p>
