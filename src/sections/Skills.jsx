@@ -1,41 +1,47 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 // Se mantienen los mismos íconos
-import { FaCamera, FaVideo, FaLightbulb, FaUsers, FaPalette, FaCheckCircle } from 'react-icons/fa';
-import { SiAdobephotoshop, SiAdobelightroom, SiAdobepremierepro, SiDavinciresolve } from 'react-icons/si';
-import { MdPhotoCamera, MdEdit, MdBusinessCenter } from 'react-icons/md';
+import { FaCamera, FaVideo, FaLightbulb, FaUsers, FaPalette, FaCheckCircle, FaAward, FaGlobe } from 'react-icons/fa';
+import { SiAdobephotoshop, SiAdobelightroom, SiAdobepremierepro, SiDavinciresolve, SiAdobeaftereffects, SiAdobeillustrator } from 'react-icons/si';
+import { MdPhotoCamera, MdEdit, MdBusinessCenter, MdOutlineHighQuality, MdSpeed, MdOutlineDesignServices } from 'react-icons/md';
 
 // --- 1. Datos centralizados y limpios ---
 // Definimos los datos fuera del componente.
 // Usamos la referencia al componente del ícono en lugar de JSX.
 // Esto hace que los datos sean más puros y la lógica de renderizado esté en el componente.
 const SKILLS_DATA = {
-  'Fotografía y Video': {
-    icon: MdPhotoCamera,
+  'Tecnología Avanzada': {
+    icon: MdOutlineHighQuality,
     items: [
-      { name: 'Fotografía de Retrato', icon: FaCamera },
-      { name: 'Fotografía de Producto', icon: FaCamera },
-      { name: 'Cinematografía', icon: FaVideo },
-      { name: 'Iluminación de Estudio', icon: FaLightbulb },
-      { name: 'Manejo de Drones', icon: FaVideo },
+      { name: 'Grabación en 8K', icon: FaVideo },
+      { name: 'Fotografía de Alta Resolución', icon: FaCamera },
+      { name: 'Fotografía Social', icon: FaUsers },
+      { name: 'Foto de Producto', icon: FaCamera },
+      { name: 'Estabilizadores de Última Generación', icon: FaLightbulb },
+      { name: 'Iluminación Profesional', icon: FaLightbulb },
     ]
   },
-  'Herramientas de Edición': {
+  'Software Especializado': {
     icon: MdEdit,
     items: [
       { name: 'Adobe Photoshop', icon: SiAdobephotoshop },
       { name: 'Adobe Lightroom', icon: SiAdobelightroom },
       { name: 'Adobe Premiere Pro', icon: SiAdobepremierepro },
-      { name: 'Final Cut Pro', icon: FaVideo },
-      { name: 'DaVinci Resolve', icon: SiDavinciresolve },
+      { name: 'Premiere', icon: SiAdobepremierepro },
+      { name: 'Adobe After Effects', icon: SiAdobeaftereffects },
+      { name: 'After Effects', icon: SiAdobeaftereffects },
+      { name: 'Adobe Illustrator', icon: SiAdobeillustrator },
+      { name: 'Illustrator', icon: SiAdobeillustrator },
     ]
   },
-  'Habilidades Profesionales': {
+  'Enfoque Profesional': {
     icon: MdBusinessCenter,
     items: [
       { name: 'Dirección Creativa', icon: FaPalette },
-      { name: 'Gestión de Proyectos', icon: FaUsers },
-      { name: 'Comunicación con Clientes', icon: FaUsers },
+      { name: 'Gestión de Proyectos', icon: MdSpeed },
+      { name: 'Servicios Personalizados', icon: MdOutlineDesignServices },
+      { name: 'Atención Internacional', icon: FaGlobe },
+      { name: 'Premios de Industria', icon: FaAward },
     ]
   },
 };
@@ -64,11 +70,11 @@ const cardVariants = {
 // --- Componente para cada habilidad individual ---
 const SkillItem = ({ icon: Icon, name }) => (
   <motion.li
-    variants={cardVariants} // Reutilizamos la variante para un efecto similar
-    className="flex items-center space-x-3 p-2 rounded-lg hover:bg-acento/5 transition-colors"
+    variants={cardVariants}
+    className="flex items-center space-x-2 p-1 rounded-lg hover:bg-acento/5 transition-colors"
   >
     <Icon className="w-5 h-5 text-acento/80 flex-shrink-0" />
-    <span className="text-texto-primary font-medium">{name}</span>
+    <span className="text-texto-primary font-medium text-sm">{name}</span>
   </motion.li>
 );
 
@@ -77,13 +83,13 @@ const SkillItem = ({ icon: Icon, name }) => (
 const SkillCard = ({ icon: Icon, title, items }) => (
   <motion.div
     variants={cardVariants}
-    className="group bg-secundario/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-acento/20 hover:border-acento/40 transition-all duration-300 hover:shadow-2xl hover:shadow-acento/10 hover:-translate-y-2"
+    className="group bg-secundario/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-acento/20 hover:border-acento/40 transition-all duration-300 hover:shadow-2xl hover:shadow-acento/10 hover:-translate-y-2"
   >
-    <div className="flex items-center mb-6">
-      <div className="p-3 bg-acento/10 rounded-xl mr-4 group-hover:bg-acento/20 transition-colors">
-        <Icon className="w-8 h-8 text-acento" />
+    <div className="flex items-center mb-3">
+      <div className="p-2 bg-acento/10 rounded-xl mr-2 group-hover:bg-acento/20 transition-colors">
+        <Icon className="w-7 h-7 text-acento" />
       </div>
-      <h3 className="text-2xl font-bold text-acento">{title}</h3>
+      <h3 className="text-xl font-bold text-acento">{title}</h3>
     </div>
 
     <motion.ul
@@ -91,7 +97,7 @@ const SkillCard = ({ icon: Icon, title, items }) => (
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       variants={containerVariants}
-      className="space-y-3"
+      className="space-y-1"
     >
       {items.map((item) => (
         <SkillItem key={item.name} icon={item.icon} name={item.name} />
@@ -110,7 +116,7 @@ const Skills = () => {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="w-full px-6 py-20 bg-gradient-to-br from-principal via-principal/95 to-secundario/10 text-texto-primary overflow-hidden"
+      className="w-full px-6 py-24 bg-gradient-to-br from-secundario via-secundario/95 to-secundario/90 text-acento overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         {/* Encabezado */}
@@ -121,12 +127,11 @@ const Skills = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
         >
-          {/* Título cambiado a color blanco sólido */}
-          <h2 className="text-5xl font-bold mb-4 text-white">
-            Habilidades y Herramientas
+          <h2 className="text-4xl font-bold mb-4 text-acento">
+            Tecnología y <span className="text-principal">Expertise</span>
           </h2>
-          <p className="text-xl text-texto-secondary max-w-2xl mx-auto">
-            Dominio técnico y creativo en fotografía, edición y dirección de proyectos visuales
+          <p className="text-xl text-acento/80 max-w-3xl mx-auto">
+            Combinamos equipos de última generación con profesionales experimentados para garantizar resultados excepcionales
           </p>
         </motion.div>
 
@@ -148,7 +153,7 @@ const Skills = () => {
           ))}
         </motion.div>
         
-        {/* Banner de Experiencia (opcional, se puede mantener o simplificar) */}
+        {/* Banner de Ventajas */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -156,10 +161,19 @@ const Skills = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-16 text-center"
         >
-          <div className="inline-flex items-center space-x-4 bg-acento/10 px-6 py-3 rounded-full">
-            <span className="text-acento font-semibold">+5 años de experiencia</span>
-            <span className="text-texto-secondary">•</span>
-            <span className="text-acento font-semibold">100+ proyectos completados</span>
+          <div className="flex flex-wrap justify-center gap-6">
+            <div className="inline-flex items-center space-x-2 bg-principal/10 px-6 py-3 rounded-full">
+              <FaCheckCircle className="text-principal" />
+              <span className="text-principal font-semibold">Equipo profesional certificado</span>
+            </div>
+            <div className="inline-flex items-center space-x-2 bg-principal/10 px-6 py-3 rounded-full">
+              <FaCheckCircle className="text-principal" />
+              <span className="text-principal font-semibold">Resultados en tiempo récord</span>
+            </div>
+            <div className="inline-flex items-center space-x-2 bg-principal/10 px-6 py-3 rounded-full">
+              <FaCheckCircle className="text-principal" />
+              <span className="text-principal font-semibold">Satisfacción garantizada</span>
+            </div>
           </div>
         </motion.div>
       </div>

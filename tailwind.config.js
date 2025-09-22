@@ -7,11 +7,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        principal: '#2C2C2C',
-        secundario: '#F5F5DC',
-        acento: '#E76F51',
-        texto1: '#856666',
-        'texto-claro': '#000000',
+        principal: '#D30000', // Rojo vibrante como color principal (60%)
+        secundario: '#F5F5F0', // Blanco hueso como color secundario (30%)
+        acento: '#2E2E2E', // Negro como color de acento (10%)
+        texto1: '#333333',
+        'texto-claro': '#FFFFFF',
       },
       keyframes: {
         float: {
