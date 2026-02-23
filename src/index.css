@@ -4,8 +4,26 @@
 
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-principal text-secundario;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #2E2E2E; 
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #D30000; 
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ff1a1a; 
   }
 }
 
@@ -15,5 +33,14 @@
   }
   .accent-bg {
     @apply bg-acento;
+  }
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  .glass-panel-dark {
+    @apply bg-acento/80 backdrop-blur-md border border-white/5;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-principal to-red-400;
   }
 }

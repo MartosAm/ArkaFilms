@@ -69,13 +69,13 @@ const Gallery = () => {
   const currentProjects = portfolioData[activeCategory];
 
   const nextProject = () => {
-    setCurrentProjectIndex((prevIndex) => 
+    setCurrentProjectIndex((prevIndex) =>
       prevIndex === currentProjects.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const prevProject = () => {
-    setCurrentProjectIndex((prevIndex) => 
+    setCurrentProjectIndex((prevIndex) =>
       prevIndex === 0 ? currentProjects.length - 1 : prevIndex - 1
     );
   };
@@ -83,88 +83,91 @@ const Gallery = () => {
   return (
     <motion.section
       id="gallery"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
-      className="relative w-full px-6 py-24 text-texto-claro overflow-hidden"
+      className="relative w-full px-6 py-24 bg-[#141414] text-secundario overflow-hidden"
     >
-      {/* Fondo difuminado compartido con Process, menos intenso */}
-      <div className="absolute inset-0 z-0">
-        <div className="w-full h-full bg-gradient-to-br from-principal/80 via-acento/60 to-principal/60" />
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-[1.5px]" />
-      </div>
+      {/* Subtle Background Elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-principal/5 to-transparent pointer-events-none" />
+      <div className="absolute top-40 -left-32 w-96 h-96 bg-principal/10 rounded-full mix-blend-screen filter blur-[100px] pointer-events-none" />
+
       <div className="max-w-7xl mx-auto flex flex-col gap-6 relative z-10">
         <div className="text-center mb-16">
-          <motion.h2 
-            className="text-4xl font-bold mb-4"
+          <span className="text-principal font-bold tracking-widest uppercase text-sm mb-3 block">Portafolio</span>
+          <motion.h2
+            className="text-5xl md:text-6xl font-black mb-6 tracking-tight"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-secundario">Galería de</span> <span className="text-acento">Proyectos</span>
+            Galería de <span className="text-transparent bg-clip-text bg-gradient-to-r from-principal to-red-500">Proyectos</span>
           </motion.h2>
-          <p className="text-xl text-secundario/80 max-w-2xl mx-auto mb-8">
+          <div className="w-24 h-1 bg-gradient-to-r from-principal to-transparent mx-auto mb-8 rounded-full"></div>
+          <p className="text-xl text-secundario/70 max-w-2xl mx-auto">
             Explora nuestro portafolio de trabajos destacados
           </p>
         </div>
 
         {/* Proyecto destacado */}
-        <div className="bg-acento/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-2xl mb-12">
-          <div className="grid md:grid-cols-2 gap-0">
+        <div className="bg-white/5 backdrop-blur-xl rounded-2xl overflow-hidden shadow-2xl mb-16 border border-white/5">
+          <div className="grid md:grid-cols-2 gap-0 group">
             {/* Imagen del proyecto destacado */}
-            <motion.div 
-              className="relative h-[400px]"
-              whileHover={{ scale: 1.02 }}
+            <motion.div
+              className="relative h-[450px] overflow-hidden"
+              whileHover={{ scale: 1.0 }}
               transition={{ duration: 0.3 }}
             >
-              <img 
-                src={currentProjects[currentProjectIndex]?.coverImage} 
-                alt={currentProjects[currentProjectIndex]?.name} 
-                className="w-full h-full object-cover"
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
+              <img
+                src={currentProjects[currentProjectIndex]?.coverImage}
+                alt={currentProjects[currentProjectIndex]?.name}
+                className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-acento/80 via-transparent to-transparent md:bg-gradient-to-r" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent md:bg-gradient-to-r md:from-[#141414] md:via-[#141414]/80 md:to-transparent z-20" />
             </motion.div>
-            
+
             {/* Detalles del proyecto */}
-            <div className="p-8 flex flex-col justify-center">
-              <div className="flex justify-between items-start mb-4">
+            <div className="p-10 md:p-14 flex flex-col justify-center relative z-30 -mt-20 md:mt-0 bg-gradient-to-t from-[#141414] to-transparent md:bg-none">
+              <div className="flex justify-between items-start mb-6">
                 <div>
-                  <p className="text-secundario/60 text-sm mb-1">
+                  <p className="text-principal font-bold tracking-widest uppercase text-xs mb-3">
                     {currentProjects[currentProjectIndex]?.year} • {currentProjects[currentProjectIndex]?.client}
                   </p>
-                  <h3 className="text-3xl font-bold text-secundario mb-2">{currentProjects[currentProjectIndex]?.name}</h3>
-                  <div className="w-16 h-1 bg-principal mb-4"></div>
+                  <h3 className="text-4xl font-black text-secundario mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-secundario group-hover:to-principal transition-all duration-300">{currentProjects[currentProjectIndex]?.name}</h3>
+                  <div className="w-12 h-1 bg-principal mb-6"></div>
                 </div>
               </div>
-              
-              <p className="text-secundario/90 mb-8">
+
+              <p className="text-secundario/70 mb-10 text-lg leading-relaxed">
                 {currentProjects[currentProjectIndex]?.fullDescription}
               </p>
-              
+
               <div className="flex items-center justify-between mt-auto">
-                <div className="flex space-x-3">
-                  <button 
+                <div className="flex space-x-4">
+                  <button
                     onClick={prevProject}
-                    className="w-10 h-10 rounded-full bg-secundario/10 flex items-center justify-center hover:bg-secundario/30 transition-colors"
+                    className="w-12 h-12 rounded-full border border-secundario/20 flex items-center justify-center hover:bg-principal hover:border-principal hover:text-white transition-all duration-300"
                     aria-label="Proyecto anterior"
                   >
-                    <FaArrowLeft className="text-secundario" />
+                    <FaArrowLeft />
                   </button>
-                  <button 
+                  <button
                     onClick={nextProject}
-                    className="w-10 h-10 rounded-full bg-secundario/10 flex items-center justify-center hover:bg-secundario/30 transition-colors"
+                    className="w-12 h-12 rounded-full border border-secundario/20 flex items-center justify-center hover:bg-principal hover:border-principal hover:text-white transition-all duration-300"
                     aria-label="Proyecto siguiente"
                   >
-                    <FaArrowRight className="text-secundario" />
+                    <FaArrowRight />
                   </button>
                 </div>
                 <button
                   onClick={() => setSelectedProject(currentProjects[currentProjectIndex])}
-                  className="flex items-center bg-principal text-secundario py-2 px-4 rounded-lg hover:bg-opacity-90 transition-colors"
+                  className="flex items-center bg-principal/10 border border-principal text-principal font-bold py-3 px-6 rounded-lg hover:bg-principal hover:text-secundario transition-colors duration-300"
                 >
-                  Ver detalles <FaExternalLinkAlt className="ml-2" />
+                  Ver detalles <FaExternalLinkAlt className="ml-3 border-l pl-3 border-current" />
                 </button>
               </div>
             </div>
@@ -185,7 +188,7 @@ const Gallery = () => {
               }}
             >
               <div className="relative cursor-pointer">
-                <img src={project.coverImage} alt={project.name} className="w-full h-48 object-cover" />
+                <img src={project.coverImage} alt={project.name} className="w-full h-48 object-cover" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-acento/80 via-acento/20 to-transparent hover:opacity-75 transition-opacity" />
               </div>
               <div className="p-5">
@@ -228,7 +231,7 @@ const Gallery = () => {
                     ×
                   </button>
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   {selectedProject.images.map((image, index) => (
                     <img
@@ -236,14 +239,15 @@ const Gallery = () => {
                       src={image}
                       alt={`${selectedProject.name} ${index + 1}`}
                       className="w-full h-48 object-cover rounded-lg"
+                      loading="lazy"
                     />
                   ))}
                 </div>
-                
+
                 <p className="text-acento/80 mb-6 leading-relaxed">
                   {selectedProject.fullDescription}
                 </p>
-                
+
                 <div className="flex gap-4">
                   <a
                     href={selectedProject.driveLink}

@@ -22,10 +22,12 @@ const Footer = () => {
   return (
     <motion.footer
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      className="bg-gradient-to-br from-acento to-acento/90 text-secundario"
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      className="bg-acento text-secundario relative overflow-hidden"
     >
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-[1px] bg-gradient-to-r from-transparent via-principal/50 to-transparent" />
       {/* Footer Principal */}
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -46,21 +48,21 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="bg-principal/20 hover:bg-principal p-3 rounded-full text-secundario transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                  className="bg-secundario/5 hover:bg-principal/20 border border-secundario/10 hover:border-principal p-3 rounded-xl text-secundario hover:text-principal transition-all duration-300 hover:shadow-[0_0_15px_rgba(211,0,0,0.5)] hover:-translate-y-1"
                 >
                   {icon}
                 </a>
               ))}
             </div>
           </div>
-          
+
           {/* Enlaces Rápidos */}
           <div>
             <h4 className="text-xl font-bold mb-6">Enlaces Rápidos</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <a 
+                  <a
                     href={link.href}
                     className="text-secundario/80 hover:text-principal transition-colors duration-300"
                   >
@@ -70,7 +72,7 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-          
+
           {/* Contacto */}
           <div>
             <h4 className="text-xl font-bold mb-6">Contacto</h4>
@@ -82,22 +84,22 @@ const Footer = () => {
             </address>
           </div>
         </div>
-        
+
         {/* Suscripción Newsletter */}
         <div className="mt-16 border-t border-secundario/20 pt-10">
           <div className="max-w-lg mx-auto text-center">
             <h4 className="text-2xl font-bold mb-3">Mantente Actualizado</h4>
             <p className="text-secundario/80 mb-6">Suscríbete a nuestro newsletter para recibir noticias y ofertas especiales.</p>
             <form className="flex flex-col sm:flex-row gap-3">
-              <input 
-                type="email" 
-                placeholder="Tu correo electrónico" 
+              <input
+                type="email"
+                placeholder="Tu correo electrónico"
                 className="flex-grow px-5 py-3 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-principal"
-                required 
+                required
               />
-              <button 
-                type="submit" 
-                className="bg-principal text-secundario px-6 py-3 rounded-lg font-bold hover:bg-opacity-90 shadow-lg hover:-translate-y-1 transform transition-all duration-300"
+              <button
+                type="submit"
+                className="bg-principal text-secundario px-8 py-3 rounded-lg font-bold hover:bg-principal/90 shadow-[0_4px_15px_rgba(211,0,0,0.4)] hover:shadow-[0_6px_20px_rgba(211,0,0,0.6)] transform transition-all duration-300"
               >
                 Suscribirse
               </button>
@@ -105,9 +107,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Copyright */}
-      <div className="bg-principal/30 py-6 text-center">
+      <div className="bg-[#1A1A1A] py-6 text-center border-t border-secundario/5">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-secundario/80 mb-3 md:mb-0">
