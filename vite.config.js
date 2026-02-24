@@ -6,7 +6,7 @@ import react from "@vitejs/plugin-react";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/ArkaFilms/', // Nombre del repositorio para GitHub Pages
+  base: '/', // Base para Vercel o dominios raíz
   build: {
     outDir: 'dist',
     sourcemap: false, // Reduce el tamaño del bundle
